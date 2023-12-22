@@ -16,8 +16,20 @@ public class Rectangle extends Shape{
         this.height = height;
     }
 
+    public Rectangle(int width, int height, boolean isFilled) {
+        super(isFilled);
+        this.width = width;
+        this.height = height;
+    }
+
     public Rectangle(Point position, int width, int height) {
         super(position);
+        this.width = width;
+        this.height = height;
+    }
+
+    public Rectangle(Point position, int width, int height, boolean isFilled) {
+        super(position, isFilled);
         this.width = width;
         this.height = height;
     }
@@ -36,6 +48,9 @@ public class Rectangle extends Shape{
     @Override
     public void draw(Graphics g) {
         g.drawRect(position.getX(), position.getY(), width, height);
+
+        if(isFilled)
+            g.fillRect(position.getX(), position.getY(), width, height);
     }
 
     public int getWidth() {

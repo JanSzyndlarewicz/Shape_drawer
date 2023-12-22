@@ -13,8 +13,18 @@ public class Circle extends Shape{
         this.radius = radius;
     }
 
+    public Circle(int radius, boolean isFilled) {
+        super(isFilled);
+        this.radius = radius;
+    }
+
     public Circle(Point position, int radius) {
         super(position);
+        this.radius = radius;
+    }
+
+    public Circle(Point position, int radius, boolean isFilled) {
+        super(position, isFilled);
         this.radius = radius;
     }
 
@@ -33,6 +43,9 @@ public class Circle extends Shape{
     @Override
     public void draw(Graphics g) {
         g.drawOval(position.getX(), position.getY(), radius, radius);
+
+        if(isFilled)
+            g.fillOval(position.getX(), position.getY(), radius, radius);
     }
 
     public int getRadius() {

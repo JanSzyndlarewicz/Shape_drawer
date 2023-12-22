@@ -1,5 +1,7 @@
 import java.awt.*;
 
+import static java.lang.Math.min;
+
 public class Triangle extends Shape{
 
     private Point point1;
@@ -13,11 +15,31 @@ public class Triangle extends Shape{
         this.point3 = new Point(10, 0);
     }
 
+    public Triangle(Point point1, Point point2, Point point3) {
+        super(new Point(min(min(point1.getX(), point2.getX()), point3.getX()), min(min(point1.getY(), point2.getY()), point3.getY())));
+        if(point1.getX() == point2.getX() && point1.getX() == point3.getX()
+                || point1.getY() == point2.getY() && point1.getY() == point3.getY())
+            throw new IllegalArgumentException("All points have the same x coordinate");
+        this.point1 = point1;
+        this.point2 = point2;
+        this.point3 = point3;
+    }
+
+    public Triangle(Point point1, Point point2, Point point3, boolean isFilled) {
+        super(new Point(min(min(point1.getX(), point2.getX()), point3.getX()), min(min(point1.getY(), point2.getY()), point3.getY())), isFilled);
+        if(point1.getX() == point2.getX() && point1.getX() == point3.getX()
+                || point1.getY() == point2.getY() && point1.getY() == point3.getY())
+            throw new IllegalArgumentException("All points have the same x coordinate");
+        this.point1 = point1;
+        this.point2 = point2;
+        this.point3 = point3;
+    }
+
     @Override
     public Point[] getBoundingBox() {
         Point[] points = new Point[4];
-        int minX = Math.min(Math.min(point1.getX(), point2.getX()), point3.getX());
-        int minY = Math.min(Math.min(point1.getY(), point2.getY()), point3.getY());
+        int minX = min(min(point1.getX(), point2.getX()), point3.getX());
+        int minY = min(min(point1.getY(), point2.getY()), point3.getY());
         int maxX = Math.max(Math.max(point1.getX(), point2.getX()), point3.getX());
         int maxY = Math.max(Math.max(point1.getY(), point2.getY()), point3.getY());
 
@@ -29,25 +51,15 @@ public class Triangle extends Shape{
         return points;
     }
 
-    public Triangle(Point point1, Point point2, Point point3) {
-        super();
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
-    }
-
-    public Triangle(Point position, Point point1, Point point2, Point point3) {
-        super(position);
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
-    }
-
     @Override
     public void draw(Graphics g) {
         g.drawLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
         g.drawLine(point2.getX(), point2.getY(), point3.getX(), point3.getY());
         g.drawLine(point3.getX(), point3.getY(), point1.getX(), point1.getY());
+
+        if(isFilled)
+            g.fillPolygon(new int[]{point1.getX(), point2.getX(), point3.getX()}, new int[]{point1.getY(), point2.getY(), point3.getY()}, 3);
+
     }
 
     public Point getPoint1() {
