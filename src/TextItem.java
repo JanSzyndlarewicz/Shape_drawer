@@ -21,11 +21,31 @@ public class TextItem extends Item{
 
     @Override
     public Point[] getBoundingBox() {
-        return new Point[0];
+        Point[] points = new Point[4];
+
+        points[0] = position;
+
+        return points;
     }
 
     @Override
     public void draw(Graphics g) {
         g.drawString(text, position.getX(), position.getY());
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "TextItem{" +
+                "text='" + text + '\'' +
+                ", position=" + position +
+                '}';
     }
 }
