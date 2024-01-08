@@ -12,6 +12,17 @@ public class Main {
         ci.addItem(new Triangle(new Point(500, 500), new Point(350, 350), new Point(400, 300), false));
         i.addItem(ci);
         i.addItem(new Spiral(new Point(100, 100),5, 10,20, 20));
+        Rectangle r = new Rectangle(new Point(100, 100), 50, 50, false);
+        i.addItem(r);
+
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        i.translateItem(r, new Point(100, 400));
 
     }
 }

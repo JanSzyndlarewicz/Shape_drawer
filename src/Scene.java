@@ -20,12 +20,27 @@ public class Scene extends JPanel {
     public void addItem(Item item) {
         items.add(item);
     }
+    public void translateItem(Item item, Point vector) {
+        item.translate(vector);
+    }
+
+    public void translateItem(int itemIndex, Point vector) {
+        if(itemIndex >= 0 && itemIndex < items.size())
+            items.get(itemIndex).translate(vector);
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(Item item : items) {
+        for(Item item : items)
             item.draw(g);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
 }

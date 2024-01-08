@@ -25,7 +25,7 @@ public abstract class Item {
         this.position = position;
     }
 
-    public void translate(Point vector) {
+    public void translate(Point vector){
         this.position.translate(vector);
     }
 }
