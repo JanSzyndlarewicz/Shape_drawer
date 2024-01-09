@@ -15,8 +15,8 @@ public class Spiral extends Shape{
         super(position);
     }
 
-    public Spiral(Point startingPoint,int numSpirals, int depth, int width, int height) {
-        super();
+    public Spiral(Point startingPoint, int numSpirals, int depth, int width, int height) {
+        super(new Point(startingPoint.getX()-numSpirals*depth*2, startingPoint.getY()-numSpirals*depth*2));
         this.startingPoint = startingPoint;
         this.numSpirals = numSpirals;
         this.depth = depth;
@@ -27,7 +27,12 @@ public class Spiral extends Shape{
 
     @Override
     public Point[] getBoundingBox() {
-        return new Point[0];
+        Point[] points = new Point[4];
+        points[0] = new Point(startingPoint.getX()+numSpirals*depth*2, startingPoint.getY()-numSpirals*depth*2);
+        points[1] = new Point(startingPoint.getX()-numSpirals*depth*2, startingPoint.getY()-numSpirals*depth*2);
+        points[2] = new Point(startingPoint.getX()-numSpirals*depth*2, startingPoint.getY()+numSpirals*depth*2);
+        points[3] = new Point(startingPoint.getX()+numSpirals*depth*2, startingPoint.getY()+numSpirals*depth*2);
+        return points;
     }
 
     @Override
@@ -51,6 +56,10 @@ public class Spiral extends Shape{
                 height = height + 2 * depth;
                 g.drawArc(x, y, width, height, 0, arcAngle);
             }
+//        System.out.println(startingPoint);
+//        System.out.println(position.getX() + " " + position.getY() + " " + getBoundingBox()[3].getX() + " " + getBoundingBox()[3].getY());
+        g.drawRect(position.getX(), position.getY(), getBoundingBox()[3].getX(), getBoundingBox()[3].getY());
+//        g.drawRect(position.getX(), position.getY(), startingPoint.getX(), startingPoint.getY());
 
     }
 }

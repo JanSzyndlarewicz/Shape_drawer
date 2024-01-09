@@ -11,7 +11,7 @@ public class Main {
         ci.addItem(new Rectangle(new Point(500, 500), 50, 50, false));
         ci.addItem(new Triangle(new Point(500, 500), new Point(350, 350), new Point(400, 300), false));
         i.addItem(ci);
-        i.addItem(new Spiral(new Point(100, 100),5, 10,20, 20));
+        i.addItem(new Spiral(new Point(150, 150),10, 5,20, 20));
         Rectangle r = new Rectangle(new Point(100, 100), 50, 50, false);
         i.addItem(r);
 
