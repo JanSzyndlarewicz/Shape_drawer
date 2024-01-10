@@ -31,7 +31,7 @@ public class Spiral extends Shape{
         points[0] = new Point(startingPoint.getX()+numSpirals*depth*2, startingPoint.getY()-numSpirals*depth*2);
         points[1] = new Point(startingPoint.getX()-numSpirals*depth*2, startingPoint.getY()-numSpirals*depth*2);
         points[2] = new Point(startingPoint.getX()-numSpirals*depth*2, startingPoint.getY()+numSpirals*depth*2);
-        points[3] = new Point(startingPoint.getX()+numSpirals*depth*2, startingPoint.getY()+numSpirals*depth*2);
+        points[3] = new Point(startingPoint.getX()+numSpirals*depth*2+width-depth, startingPoint.getY()+numSpirals*depth*2+height-depth);
         return points;
     }
 
@@ -59,7 +59,7 @@ public class Spiral extends Shape{
 //        System.out.println(startingPoint);
 //        System.out.println(position.getX() + " " + position.getY() + " " + getBoundingBox()[3].getX() + " " + getBoundingBox()[3].getY());
         g.drawRect(position.getX(), position.getY(), getBoundingBox()[3].getX(), getBoundingBox()[3].getY());
-//        g.drawRect(position.getX(), position.getY(), startingPoint.getX(), startingPoint.getY());
+        g.drawRect(position.getX(), position.getY(), startingPoint.getX(), startingPoint.getY());
 
     }
 }

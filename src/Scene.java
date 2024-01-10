@@ -3,8 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Scene extends JPanel {
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
+    private static final int WIDTH = 610;
+    private static final int HEIGHT = 810;
     private static final String TITLE = "Paint";
     private final ArrayList<Item> items;
 
