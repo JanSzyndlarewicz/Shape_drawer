@@ -1,6 +1,6 @@
 import java.awt.*;
 public class Segment extends Primitive{
-    Point endPosition;
+   private Point endPosition;
 
     public Segment() {
         super();
@@ -28,5 +28,13 @@ public class Segment extends Primitive{
     @Override
     public void draw(Graphics g) {
         g.drawLine(position.getX(), position.getY(), endPosition.getX(), endPosition.getY());
+    }
+
+    public Point getEndPosition() {
+        return endPosition;
+    }
+
+    public void setEndPosition(Point endPosition) {
+        this.endPosition = endPosition;
     }
 }
