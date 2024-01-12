@@ -3,8 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Scene extends JPanel {
-    private static final int WIDTH = 610;
-    private static final int HEIGHT = 810;
+    private static final int WIDTH = 1000;
+    private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
     private final ArrayList<Item> items;
 
@@ -21,7 +21,10 @@ public class Scene extends JPanel {
         items.add(item);
     }
     public void translateItem(Item item, Point vector) {
-        item.translate(vector);
+        //item.translate(vector);
+        for(int i = 0; i < items.size(); i++)
+            if(items.get(i).equals(item))
+                items.get(i).translate(vector);
     }
 
     public void translateItem(int itemIndex, Point vector) {
@@ -36,11 +39,8 @@ public class Scene extends JPanel {
         for(Item item : items)
             item.draw(g);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        //translateItem(1, new Point(200, 200));
     }
 
 }

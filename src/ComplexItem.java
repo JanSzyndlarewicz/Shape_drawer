@@ -61,6 +61,9 @@ public class ComplexItem extends Item{
     @Override
     public void draw(Graphics g) {
         for(Item item : items) {
+            System.out.println(item.getPosition());
+            item.translate(position);
+            System.out.println(item.getPosition());
             item.draw(g);
         }
     }

@@ -57,7 +57,10 @@ public class TextItem extends Item{
         g.drawString(text, position.getX(), position.getY());
 
         int width = g.getFontMetrics().stringWidth(text);
+        int tmp = g.getFontMetrics().stringWidth("W");
         int height = g.getFontMetrics().getHeight();
+
+        g.drawRect(position.getX(), position.getY()-(tmp), width, height);
 
         endPosition = new Point(
                 position.getX()+width,
