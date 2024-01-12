@@ -60,11 +60,9 @@ public class TextItem extends Item{
         int tmp = g.getFontMetrics().stringWidth("W");
         int height = g.getFontMetrics().getHeight();
 
-        g.drawRect(position.getX(), position.getY()-(tmp), width, height);
+        //g.drawRect(position.getX(), position.getY()-(tmp), width, height);
 
-        endPosition = new Point(
-                position.getX()+width,
-                position.getY()-height);
+        endPosition = new Point(position.getX()+width, position.getY()-height);
     }
 
     public String getText() {

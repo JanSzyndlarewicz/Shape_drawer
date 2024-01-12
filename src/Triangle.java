@@ -16,7 +16,7 @@ public class Triangle extends Shape{
     }
 
     public Triangle(Point point1, Point point2, Point point3) {
-        super(new Point(min(min(point1.getX(), point2.getX()), point3.getX()), min(min(point1.getY(), point2.getY()), point3.getY())));
+        super(new Point(0, 0));
         if(point1.getX() == point2.getX() && point1.getX() == point3.getX()
                 || point1.getY() == point2.getY() && point1.getY() == point3.getY())
             throw new IllegalArgumentException("All points have the same x coordinate");
@@ -26,7 +26,7 @@ public class Triangle extends Shape{
     }
 
     public Triangle(Point point1, Point point2, Point point3, boolean isFilled) {
-        super(new Point(min(min(point1.getX(), point2.getX()), point3.getX()), min(min(point1.getY(), point2.getY()), point3.getY())), isFilled);
+        super(new Point(0, 0), isFilled);
         if(point1.getX() == point2.getX() && point1.getX() == point3.getX()
                 || point1.getY() == point2.getY() && point1.getY() == point3.getY())
             throw new IllegalArgumentException("All points have the same x coordinate");
@@ -53,13 +53,12 @@ public class Triangle extends Shape{
 
     @Override
     public void draw(Graphics g) {
-        g.drawLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
-        g.drawLine(point2.getX(), point2.getY(), point3.getX(), point3.getY());
-        g.drawLine(point3.getX(), point3.getY(), point1.getX(), point1.getY());
+        g.drawLine(point1.getX()+position.getX(), point1.getY()+position.getY(), point2.getX()+position.getX(), point2.getY()+position.getY());
+        g.drawLine(point2.getX()+position.getX(), point2.getY()+position.getY(), point3.getX()+position.getX(), point3.getY()+position.getY());
+        g.drawLine(point3.getX()+position.getX(), point3.getY()+position.getY(), point1.getX()+position.getX(), point1.getY()+position.getY());
 
         if(isFilled)
             g.fillPolygon(new int[]{point1.getX(), point2.getX(), point3.getX()}, new int[]{point1.getY(), point2.getY(), point3.getY()}, 3);
-
     }
 
     public Point getPoint1() {

@@ -37,6 +37,9 @@ public class Spiral extends Shape{
 
     @Override
     public void draw(Graphics g) {
+        if(position.getX() != startingPoint.getX()-numSpirals*depth*2 || position.getY() != startingPoint.getY()-numSpirals*depth*2)
+            startingPoint = new Point(position.getX()+numSpirals*depth*2, position.getY()+numSpirals*depth*2);
+
         int x = startingPoint.getX() ;
         int y = startingPoint.getY();
         int width = this.width;
