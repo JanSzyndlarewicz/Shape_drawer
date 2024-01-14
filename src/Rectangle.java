@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Rectangle extends Shape implements RectangleSingletonService {
+public class Rectangle extends Shape{
     private int width;
     private int height;
 
@@ -75,12 +75,6 @@ public class Rectangle extends Shape implements RectangleSingletonService {
                 '}';
     }
 
-    @Override
-    public void createSingletonOnScene() {
-        Scene.removeAllRectangles();
-        Scene.addItem(this);
-        System.out.println("Rectangle Singleton Created");
-    }
 
 
 }

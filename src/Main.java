@@ -23,8 +23,11 @@ public class Main {
 //        ci.addItem(s);
 //        i.addItem(ci);
 
-        Rectangle r2 = new Rectangle(new Point(500, 100), 100, 100, false);
-        r2.createSingletonOnScene();
+        RectangleSingleton rs = new RectangleSingleton(100, 500, false);
+        i.addItem(rs);
+
+        RectangleSingleton rs2 = new RectangleSingleton(100, 100, false);
+        i.addItem(rs2);
 
 
 

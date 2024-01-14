@@ -17,9 +17,9 @@ public class Scene extends JPanel {
         frame.setVisible(true);
     }
 
-    public static void removeAllRectangles() {
+    public static void removeAllRectangleSingletons() {
         for (int i = 0; i < items.size(); i++) {
-            if (items.get(i) instanceof Rectangle) {
+            if (items.get(i) instanceof RectangleSingleton) {
                 items.remove(i);
                 i--;
             }
