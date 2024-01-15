@@ -1,25 +1,41 @@
 import java.awt.*;
+import java.util.HashMap;
 
-public class RectangleSingleton extends Rectangle{
+public class RectangleSingleton extends Shape implements RectangleMixIn{
+
+    private int width;
+    private int height;
 
 
     public RectangleSingleton(int width, int height) {
-        super(width, height);
+        //super(width, height);
+        super();
+        this.width = width;
+        this.height = height;
         Scene.removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(int width, int height, boolean isFilled) {
-        super(width, height, isFilled);
+        //super(width, height, isFilled);
+        super(isFilled);
+        this.width = width;
+        this.height = height;
         Scene.removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(Point position, int width, int height) {
-        super(position, width, height);
+        //super(position, width, height);
+        super(position);
+        this.width = width;
+        this.height = height;
         Scene.removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(Point position, int width, int height, boolean isFilled) {
-        super(position, width, height, isFilled);
+        //super(position, width, height, isFilled);
+        super(position, isFilled);
+        this.width = width;
+        this.height = height;
         Scene.removeAllRectangleSingletons();
     }
 
@@ -40,32 +56,41 @@ public class RectangleSingleton extends Rectangle{
 
     @Override
     public Point[] getBoundingBox() {
-        return super.getBoundingBox();
+        Point[] points = new Point[4];
+        points[0] = new Point(position.getX(), position.getY());
+        points[1] = new Point(position.getX() + width, position.getY());
+        points[2] = new Point(position.getX(), position.getY() + height);
+        points[3] = new Point(position.getX() + width, position.getY() + height);
+
+        return points;
     }
 
     @Override
     public void draw(Graphics g) {
-        super.draw(g);
+        g.drawRect(position.getX(), position.getY(), width, height);
+
+        if(isFilled)
+            g.fillRect(position.getX(), position.getY(), width, height);
     }
 
     @Override
     public int getWidth() {
-        return super.getWidth();
+        return this.width;
     }
 
     @Override
     public int getHeight() {
-        return super.getHeight();
+        return this.height;
     }
 
     @Override
     public void setWidth(int width) {
-        super.setWidth(width);
+        this.width = width;
     }
 
     @Override
     public void setHeight(int height) {
-        super.setHeight(height);
+        this.height = height;
     }
 
     @Override

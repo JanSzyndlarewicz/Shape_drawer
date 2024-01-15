@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape implements RectangleMixIn{
     private int width;
     private int height;
 
