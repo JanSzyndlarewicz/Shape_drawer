@@ -6,7 +6,7 @@ public class Scene extends JPanel {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
-    private final ArrayList<Item> items;
+    protected final ArrayList<Item> items;
 
     public Scene() {
         this.items = new ArrayList<>();
@@ -21,7 +21,6 @@ public class Scene extends JPanel {
         items.add(item);
     }
     public void translateItem(Item item, Point vector) {
-        //item.translate(vector);
         for(int i = 0; i < items.size(); i++)
             if(items.get(i).equals(item))
                 items.get(i).translate(vector);
@@ -38,9 +37,6 @@ public class Scene extends JPanel {
         super.paintComponent(g);
         for(Item item : items)
             item.draw(g);
-
-
-        //translateItem(1, new Point(200, 200));
     }
 
 }
