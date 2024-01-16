@@ -12,7 +12,7 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
         super();
         this.width = width;
         this.height = height;
-        Scene.removeAllRectangleSingletons();
+        removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(int width, int height, boolean isFilled) {
@@ -20,7 +20,7 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
         super(isFilled);
         this.width = width;
         this.height = height;
-        Scene.removeAllRectangleSingletons();
+        removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(Point position, int width, int height) {
@@ -28,7 +28,7 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
         super(position);
         this.width = width;
         this.height = height;
-        Scene.removeAllRectangleSingletons();
+        removeAllRectangleSingletons();
     }
 
     public RectangleSingleton(Point position, int width, int height, boolean isFilled) {
@@ -36,7 +36,7 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
         super(position, isFilled);
         this.width = width;
         this.height = height;
-        Scene.removeAllRectangleSingletons();
+        removeAllRectangleSingletons();
     }
 
     @Override
@@ -73,22 +73,18 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
             g.fillRect(position.getX(), position.getY(), width, height);
     }
 
-    @Override
     public int getWidth() {
         return this.width;
     }
 
-    @Override
     public int getHeight() {
         return this.height;
     }
 
-    @Override
     public void setWidth(int width) {
         this.width = width;
     }
 
-    @Override
     public void setHeight(int height) {
         this.height = height;
     }
@@ -107,5 +103,15 @@ public class RectangleSingleton extends Shape implements RectangleMixIn{
     @Override
     public void setFilled(boolean filled) {
         super.setFilled(filled);
+    }
+
+    @Override
+    public void removeAllRectangleSingletons() {
+        for (int i = 0; i < Scene.items.size(); i++) {
+            if (Scene.items.get(i) instanceof RectangleSingleton) {
+                Scene.items.remove(i);
+                i--;
+            }
+        }
     }
 }

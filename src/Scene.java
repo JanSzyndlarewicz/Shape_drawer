@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Scene extends JPanel {
+public class Scene extends JPanel{
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
@@ -15,15 +15,6 @@ public class Scene extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(this);
         frame.setVisible(true);
-    }
-
-    public static void removeAllRectangleSingletons() {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i) instanceof RectangleSingleton) {
-                items.remove(i);
-                i--;
-            }
-        }
     }
 
     public static void addItem(Item item) {
