@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Scene extends JPanel {
+public class Scene extends JPanel implements SceneFunc{
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
@@ -33,7 +33,7 @@ public class Scene extends JPanel {
 
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for(Item item : items)
             item.draw(g);

@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class SceneBoundingBoxPicker extends Scene {
+public class SceneBoundingBoxPicker extends Scene implements SceneFunc{
     private ArrayList<Item> pickedItems = new ArrayList<>();
     public SceneBoundingBoxPicker() {
         super();
@@ -42,7 +42,7 @@ public class SceneBoundingBoxPicker extends Scene {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Point[] boundingBoxOfPickedItems = getBoundingBoxOfPickedItems();
 
