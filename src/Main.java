@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        SceneBoundingBoxPicker i = new SceneBoundingBoxPicker();
+        Scene i = new Scene();
 //        i.addItem(new Circle(new Point(100, 400), 50, false));
           //i.addItem(new Rectangle(new Point(200, 200), 50, 50, false));
 //        i.addItem(new Triangle(new Point(300, 300), new Point(350, 350), new Point(400, 300), false));
@@ -27,17 +27,17 @@ public class Main {
         i.addItem(t);
         Rectangle r = new Rectangle(new Point(200, 400), 100, 100, false);
         i.addItem(r);
-        Circle c = new Circle(new Point(400, 100), 100, false);
+        Circle c = new Circle(new Point(100, 200), 100, false);
         i.addItem(c);
         TextItem ti = new TextItem(new Point(100, 100), "Hello World", new Font("Arial", Font.BOLD, 20));
-        //i.addItem(ti);
+        i.addItem(ti);
         Spiral s = new Spiral(new Point(100, 100), 10, 5, 10, 20);
 
         ArrayList<Item> items = new ArrayList<>();
         items.add(t);
         items.add(r);
         //items.add(c);
-        i.pickItems(items);
+        //i.pickItems(items);
         //i.addItem(s);
         /*ComplexItem ci = new ComplexItem();
         ci.addItem(t);

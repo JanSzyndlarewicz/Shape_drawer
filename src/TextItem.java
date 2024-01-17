@@ -4,38 +4,35 @@ public class TextItem extends Item{
 
     private String text;
     private Font font;
-    private Point endPosition;
+    private int width;
+    private int height;
+    private int tmp;
 
     public TextItem() {
         super();
-        endPosition = new Point();
         font = new Font("Arial", Font.PLAIN, 20);
         this.text = "";
     }
 
     public TextItem(String text) {
         super();
-        endPosition = new Point();
         font = new Font("Arial", Font.PLAIN, 20);
         this.text = text;
     }
 
     public TextItem(String text, Font font) {
         super();
-        endPosition = new Point();
         this.font = font;
         this.text = text;
     }
 
     public TextItem(Point position, String text) {
         super(position);
-        endPosition = position;
         this.text = text;
     }
 
     public TextItem(Point position, String text, Font font) {
         super(position);
-        endPosition = position;
         this.font = font;
         this.text = text;
     }
@@ -44,10 +41,10 @@ public class TextItem extends Item{
     public Point[] getBoundingBox() {
         Point[] points = new Point[4];
 
-        points[0] = position;
-        points[1] = new Point(position.getX(), endPosition.getY());
-        points[2] = endPosition;
-        points[3] = new Point(endPosition.getX(), position.getY());
+        points[0] = new Point(position.getX(), position.getY() - tmp);
+        points[1] = new Point(position.getX() + width, position.getY() - tmp);
+        points[2] = new Point(position.getX(), position.getY() - tmp + height);
+        points[3] = new Point(position.getX() + width, position.getY() - tmp + height);
         return points;
     }
 
@@ -56,13 +53,16 @@ public class TextItem extends Item{
         g.setFont(font);
         g.drawString(text, position.getX(), position.getY());
 
-        int width = g.getFontMetrics().stringWidth(text);
-        int tmp = g.getFontMetrics().stringWidth("W");
-        int height = g.getFontMetrics().getHeight();
+        width = g.getFontMetrics().stringWidth(text);
+        tmp = g.getFontMetrics().stringWidth("W");
+        height = g.getFontMetrics().getHeight();
+    }
 
-        //g.drawRect(position.getX(), position.getY()-(tmp), width, height);
-
-        endPosition = new Point(position.getX()+width, position.getY()-height);
+    @Override
+    public boolean contains(Point point) {
+        Point[] points = getBoundingBox();
+        return point.getX() >= points[0].getX() && point.getX() <= points[3].getX()
+                && point.getY() >= points[0].getY() && point.getY() <= points[3].getY();
     }
 
     public String getText() {

@@ -37,6 +37,7 @@ public class Rectangle extends Shape{
     @Override
     public Point[] getBoundingBox() {
         Point[] points = new Point[4];
+
         points[0] = new Point(position.getX(), position.getY());
         points[1] = new Point(position.getX() + width, position.getY());
         points[2] = new Point(position.getX(), position.getY() + height);
@@ -51,6 +52,12 @@ public class Rectangle extends Shape{
 
         if(isFilled)
             g.fillRect(position.getX(), position.getY(), width, height);
+    }
+
+    @Override
+    public boolean contains(Point point) {
+        return (point.getX() >= position.getX() && point.getX() <= position.getX() + width) &&
+                (point.getY() >= position.getY() && point.getY() <= position.getY() + height);
     }
 
     public int getWidth() {

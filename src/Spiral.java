@@ -60,4 +60,10 @@ public class Spiral extends Shape{
                 g.drawArc(x, y, width, height, 0, arcAngle);
             }
     }
+
+    @Override
+    public boolean contains(Point point) {
+        return point.getX() >= startingPoint.getX() && point.getX() <= startingPoint.getX() + width &&
+                point.getY() >= startingPoint.getY() && point.getY() <= startingPoint.getY() + height;
+    }
 }

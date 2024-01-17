@@ -67,4 +67,12 @@ public class ComplexItem extends Item{
         position.setX(0);
         position.setY(0);
     }
+
+    @Override
+    public boolean contains(Point point) {
+        for(Item item : items)
+            if(item.contains(point))
+                return true;
+        return false;
+    }
 }
