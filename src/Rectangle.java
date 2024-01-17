@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape implements Singleton{
     private int width;
     private int height;
 
@@ -33,6 +33,7 @@ public class Rectangle extends Shape{
         this.width = width;
         this.height = height;
     }
+
 
     @Override
     public Point[] getBoundingBox() {

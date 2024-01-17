@@ -8,11 +8,11 @@ public class Scene extends JPanel implements MouseListener{
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
-    private final ArrayList<ItemInterface> items;
+    private static ArrayList<ItemInterface> items;
     private Point pressedPoint;
 
     public Scene() {
-        this.items = new ArrayList<>();
+        items = new ArrayList<>();
         JFrame frame = new JFrame(TITLE);
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,9 +21,20 @@ public class Scene extends JPanel implements MouseListener{
         frame.setVisible(true);
     }
 
-    public void addItem(Item item) {
+    public static void addItem(Item item) {
+        removeAllSingletons();
         items.add(item);
     }
+
+    public static void removeAllSingletons() {
+        for (int i = 0; i < Scene.items.size(); i++) {
+            if (Scene.items.get(i) instanceof Singleton) {
+                Scene.items.remove(i);
+                i--;
+            }
+        }
+    }
+
     public void translateItem(Item item, Point vector) {
         for (ItemInterface value : items)
             if (value.equals(item))
