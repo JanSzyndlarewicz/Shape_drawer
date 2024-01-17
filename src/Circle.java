@@ -36,16 +36,19 @@ public class Circle extends Shape{
         points[1] = new Point(position.getX() + radius, position.getY());
         points[2] = new Point(position.getX(), position.getY() + radius);
         points[3] = new Point(position.getX() + radius, position.getY() + radius);
-
         return points;
     }
 
     @Override
     public void draw(Graphics g) {
         g.drawOval(position.getX(), position.getY(), radius, radius);
-
         if(isFilled)
             g.fillOval(position.getX(), position.getY(), radius, radius);
+    }
+
+    @Override
+    public boolean contains(Point point) {
+        return (Math.pow(point.getX() - position.getX() - (double) radius /2, 2) + Math.pow(point.getY() - position.getY() - (double) radius /2, 2)) <= Math.pow((double) radius /2, 2);
     }
 
     public int getRadius() {

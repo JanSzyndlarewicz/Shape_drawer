@@ -61,6 +61,22 @@ public class Triangle extends Shape{
             g.fillPolygon(new int[]{point1.getX(), point2.getX(), point3.getX()}, new int[]{point1.getY(), point2.getY(), point3.getY()}, 3);
     }
 
+    @Override
+    public boolean contains(Point point) {
+        int x1 = point1.getX() + position.getX();
+        int y1 = point1.getY() + position.getY();
+        int x2 = point2.getX() + position.getX();
+        int y2 = point2.getY() + position.getY();
+        int x3 = point3.getX() + position.getX();
+        int y3 = point3.getY() + position.getY();
+
+        int a = (x1 - point.getX()) * (y2 - y1) - (x2 - x1) * (y1 - point.getY());
+        int b = (x2 - point.getX()) * (y3 - y2) - (x3 - x2) * (y2 - point.getY());
+        int c = (x3 - point.getX()) * (y1 - y3) - (x1 - x3) * (y3 - point.getY());
+
+        return ((a >= 0 && b >= 0 && c >= 0) || (a <= 0 && b <= 0 && c <= 0));
+    }
+
     public Point getPoint1() {
         return point1;
     }

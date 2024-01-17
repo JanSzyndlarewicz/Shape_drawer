@@ -30,6 +30,11 @@ public class Segment extends Primitive{
         g.drawLine(position.getX(), position.getY(), endPosition.getX(), endPosition.getY());
     }
 
+    @Override
+    public boolean contains(Point point) {
+        return false;
+    }
+
     public Point getEndPosition() {
         return endPosition;
     }
