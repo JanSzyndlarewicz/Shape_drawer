@@ -18,7 +18,17 @@ public class Scene extends JPanel{
     }
 
     public static void addItem(Item item) {
+        removeAllSingletons();
         items.add(item);
+    }
+
+    public static void removeAllSingletons() {
+        for (int i = 0; i < Scene.items.size(); i++) {
+            if (Scene.items.get(i) instanceof Singleton) {
+                Scene.items.remove(i);
+                i--;
+            }
+        }
     }
     public static void translateItem(Item item, Point vector) {
         for (Item value : items)

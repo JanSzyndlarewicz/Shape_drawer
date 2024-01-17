@@ -8,7 +8,7 @@ public class Main {
         Triangle t = new Triangle(new Point(100, 100), new Point(200, 200), new Point(300, 100), false);
         //i.addItem(t);
         Rectangle r = new Rectangle(new Point(100, 100), 100, 100, false);
-        i.addItem(r);
+        Scene.addItem(r);
         Circle c = new Circle(new Point(100, 100), 100, false);
         //i.addItem(c);
         TextItem ti = new TextItem(new Point(100, 100), "Hello World", new Font("Arial", Font.BOLD, 20));
@@ -23,11 +23,9 @@ public class Main {
 //        ci.addItem(s);
 //        i.addItem(ci);
 
-        RectangleSingleton rs = new RectangleSingleton(100, 500, false);
-        i.addItem(rs);
+        Rectangle r2 = new Rectangle(new Point(300, 100), 100, 100, true);
+        Scene.addItem(r2);
 
-        RectangleSingleton rs2 = new RectangleSingleton(100, 100, false);
-        i.addItem(rs2);
 
 
 
