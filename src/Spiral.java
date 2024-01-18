@@ -63,7 +63,11 @@ public class Spiral extends Shape{
 
     @Override
     public boolean contains(Point point) {
-        return point.getX() >= startingPoint.getX() && point.getX() <= startingPoint.getX() + width &&
-                point.getY() >= startingPoint.getY() && point.getY() <= startingPoint.getY() + height;
+        int radius = depth * numSpirals;
+
+        return (Math.pow(point.getX() - position.getX() -  radius, 2) + Math.pow(point.getY() - position.getY() - radius , 2)) <= Math.pow(radius, 2);
+
+//        return point.getX() >= startingPoint.getX() && point.getX() <= startingPoint.getX() + width &&
+//                point.getY() >= startingPoint.getY() && point.getY() <= startingPoint.getY() + height;
     }
 }
