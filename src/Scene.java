@@ -8,8 +8,8 @@ public class Scene extends JPanel implements MouseListener{
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
     private static final String TITLE = "Paint";
-    private static ArrayList<ItemInterface> items;
-    private Point pressedPoint;
+    private static ArrayList<ItemHandler> items;
+    private static Point pressedPoint;
 
     public Scene() {
         items = new ArrayList<>();
@@ -22,13 +22,14 @@ public class Scene extends JPanel implements MouseListener{
     }
 
     public static void addItem(Item item) {
-        removeAllSingletons();
+        if(item instanceof Singleton)
+            removeAllSingletons(item);
         items.add(item);
     }
 
-    public static void removeAllSingletons() {
+    public static void removeAllSingletons(ItemHandler item) {
         for (int i = 0; i < Scene.items.size(); i++) {
-            if (Scene.items.get(i) instanceof Singleton) {
+            if (Scene.items.get(i).getClass().equals(item.getClass())) {
                 Scene.items.remove(i);
                 i--;
             }
@@ -36,7 +37,7 @@ public class Scene extends JPanel implements MouseListener{
     }
 
     public void translateItem(Item item, Point vector) {
-        for (ItemInterface value : items)
+        for (ItemHandler value : items)
             if (value.equals(item))
                 value.translate(vector);
     }
@@ -49,14 +50,14 @@ public class Scene extends JPanel implements MouseListener{
     public void clearItemsWithDecorator() {
         for(int i = 0; i < items.size(); i++)
             if(items.get(i) instanceof ItemDecorator)
-                items.set(i, ((ItemDecorator) items.get(i)).getItem());
+                items.set(i, ((ItemDecorator) items.get(i)).getWrapper());
     }
 
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(ItemInterface item : items)
+        for(ItemHandler item : items)
             item.draw(g);
     }
 

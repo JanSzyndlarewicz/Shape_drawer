@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public interface ItemInterface {
+public interface ItemHandler {
     Point[] getBoundingBox();
     void draw(Graphics g);
     void translate(Point vector);

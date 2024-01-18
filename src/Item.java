@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Item implements ItemInterface{
+public abstract class Item implements ItemHandler {
     protected Point position;
 
     public Item() {

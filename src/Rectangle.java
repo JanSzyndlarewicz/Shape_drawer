@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Rectangle extends Shape implements Singleton{
+public class Rectangle extends Shape implements RectangleSingleton{
     private int width;
     private int height;
 

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Circle extends Shape{
+public class Circle extends Shape implements CircleSingleton{
     private int radius;
 
     public Circle() {
